@@ -5,6 +5,9 @@ import router from './router'
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
+//设置vue-resource的请求根路径
+Vue.http.options.root = 'http://www.lovegf.cn:8899/api/';
+
 // css reset  css初始化
 import './styles/common.css'
 // 引入mui的css文件
@@ -23,10 +26,18 @@ Vue.use(MintUI)
 
 Vue.config.productionTip = false
 
+//引入moment
+import moment from 'moment'
+
+//定义全局过滤器
+Vue.filter('dateFormat', function(dateStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
+    return moment(dateStr).format(pattern)
+})
+
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  // render函数的作用是将APP组件替换掉#app盒子
-  render: h => h(App) 
+    el: '#app',
+    router,
+    // render函数的作用是将APP组件替换掉#app盒子
+    render: h => h(App)
 })
