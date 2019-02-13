@@ -34,7 +34,10 @@ Vue.filter('dateFormat', function(dateStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
     return moment(dateStr).format(pattern)
 })
 
-/* eslint-disable no-new */
+//全局注册组件
+import comment from './components/comment.vue'
+Vue.component('comment', comment)
+
 new Vue({
     el: '#app',
     router,
