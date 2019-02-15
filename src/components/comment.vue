@@ -2,12 +2,12 @@
   <div class="cmt-container">
     <h3>发表评论</h3>
     <hr>
-    <textarea placeholder="请输入要BB的内容（做多吐槽120字）" maxlength="120"></textarea>
+    <textarea placeholder="请输入要BB的内容（做多吐槽120字）" maxlength="120" v-model="commentContent"></textarea>
 
-    <mt-button type="primary" size="large">发表评论</mt-button>
+    <mt-button type="primary" size="large" @click="postComment">发表评论</mt-button>
 
     <div class="cmt-list">
-      <div class="cmt-item" v-for="(item, i) in comments" :key="item.add_time">
+      <div class="cmt-item" v-for="(item, i) in comments" :key="i">
         <div
           class="cmt-title"
         >第{{ i+1 }}楼&nbsp;&nbsp;用户：{{ item.user_name }}&nbsp;&nbsp;发表时间：{{ item.add_time | dateFormat }}</div>
@@ -21,11 +21,13 @@
 
 
 <script>
+import { Toast } from "mint-ui";
 export default {
   data() {
     return {
       pageIndex: 1, // 默认展示第一页数据
-      comments: [] // 所有的评论数据
+      comments: [], // 所有的评论数据
+      commentContent:""
     };
   },
   created() {
@@ -46,6 +48,17 @@ export default {
       // 加载更多
       this.pageIndex++;
       this.getComments();
+    },
+    postComment(){
+      //发表评论
+      this.$http.post("postcomment/" + this.id, {content: this.commentContent})
+      .then(result =>{
+        Toast(result.body.message);
+        this.pageIndex = 1;
+        this.commentContent = "";
+        this.comments = [];
+        this.getComments()
+      })
     }
   },
   props: ["id"]
