@@ -2,7 +2,7 @@
     <div class="photoinfo-container">
         <h3>{{ photoinfo.title }}</h3>
         <p class="subtitle">
-            <span>发表时间: {{ photoinfo.add_time | dataFormat }}</span>
+            <span>发表时间: {{ photoinfo.add_time | dateFormat }}</span>
             <span>点击: {{ photoinfo.click }}次</span>
         </p>
 

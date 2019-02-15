@@ -10,6 +10,7 @@ Vue.http.options.root = 'http://www.lovegf.cn:8899/api/';
 
 // css初始化
 import './styles/common.css'
+
 // 引入mui的css文件
 import './libs/mui/css/mui.css'
 import './libs/mui/css/icons-extra.css'
