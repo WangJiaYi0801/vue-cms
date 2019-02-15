@@ -8,11 +8,10 @@ Vue.use(VueResource)
 //设置vue-resource的请求根路径
 Vue.http.options.root = 'http://www.lovegf.cn:8899/api/';
 
-// css reset  css初始化
+// css初始化
 import './styles/common.css'
 // 引入mui的css文件
 import './libs/mui/css/mui.css'
-// 引入mui扩展字体的css文件
 import './libs/mui/css/icons-extra.css'
 
 // 1.导入mint-ui和其样式文件
