@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class=".photo-list-component">
     <div id="slider" class="mui-slider">
       <div
         id="sliderSegmentedControl"
@@ -15,6 +15,7 @@
         </div>
       </div>
     </div>
+
     <!-- 图片列表区域 -->
     <ul class="photo-list">
       <router-link v-for="item in photoList" :key="item.id" :to="'/home/photoInfo/' + item.id" tag="li">
