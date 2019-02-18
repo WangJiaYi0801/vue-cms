@@ -87,6 +87,9 @@ export default {
     this.getGoodsInfo();
   },
   methods: {
+    ...mapMutations([
+      'addToShopCar',
+    ]),
     getLunbotu() {
       this.$http.get("getthumimages/" + this.id).then(result => {
         if (result.body.status === 0) {
@@ -112,9 +115,6 @@ export default {
     goComment(id) {
       this.$router.push("/home/goodsComment/" + id);
     },
-    addToShopCar() {
-      this.ballFlag = !this.ballFlag;
-    },
     beforeEnter: el => {
       el.style.transform = "translate(0,0)";
     },
@@ -127,11 +127,11 @@ export default {
       const xDist = badgePosition.left - ballPosition.left;
       const yDist = badgePosition.top - ballPosition.top;
       el.style.transform = `translate(${xDist}px,${yDist}px)`;
-      el.style.transform = "all 0.5s cubic-bezier(.4,-0.3,1,.68)";
+      el.style.transition = "all 1s cubic-bezier(.4,-0.3,1,.68)";
       done();
     },
     afterEnter(el) {
-      this.ballFlag = !this.ballFlag;
+      this.ballFlag = false
     },
     getSelectedCount(count) {
       this.selectedCount = count;

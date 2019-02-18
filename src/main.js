@@ -42,6 +42,19 @@ Vue.component('comment', comment)
 import VuePreview from 'vue-pic-preview'
 Vue.use(VuePreview)
 
+//安装vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+let store = new Vuex.Store({
+    state: {
+        count: 0
+    },
+    mutations: {
+
+    }
+})
+
 new Vue({
     el: '#app',
     router,
